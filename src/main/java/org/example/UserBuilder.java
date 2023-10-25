@@ -63,6 +63,17 @@ final class UserBuilder {
         emailSend.sendEmail(this.email);
         return new User(lastName, firstName, email, address);
     }
-    
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserBuilder that = (UserBuilder) o;
+        return Objects.equals(emailSend, that.emailSend) && Objects.equals(lastName, that.lastName) && Objects.equals(firstName, that.firstName) && Objects.equals(email, that.email) && Objects.equals(address, that.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(emailSend, lastName, firstName, email, address);
+    }
 }
