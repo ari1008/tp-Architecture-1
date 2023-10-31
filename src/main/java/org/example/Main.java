@@ -45,7 +45,7 @@ public class Main {
 
         logger.of("\n----- Verification Singleton -----\n");
 
-        logger.equal(email2, email);
-        logger.of("But EmailSend domains are equal: " + email2.getDomain() + " == " + email.getDomain());
+        logger.equalObject(email2, email);
+        logger.of("But EmailSend domains are equalObject: " + email2.getDomain() + " == " + email.getDomain());
     }
 }

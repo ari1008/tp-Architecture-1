@@ -12,7 +12,7 @@ public class ConsoleLogger implements Logger {
     }
 
     @Override
-    public void equal(Object object, Object object1) {
-        System.out.println(Object.class.getName() + " instances are equal : " + Object.class.equals(object1));
+    public void equalObject(Object object, Object object1) {
+        System.out.println(Object.class.getName() + " instances are equalObject : " + object.equals(object1));
     }
 }

@@ -6,6 +6,6 @@ public interface Logger {
 
     void toStringObject(Object object);
 
-    void equal(Object object, Object object1);
+    void equalObject(Object object, Object object1);
 
 }
