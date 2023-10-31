@@ -3,36 +3,49 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        EmailSend emailSend = EmailSend.of("example.com");
+        Logger logger = new ConsoleLogger();
+
+        Email email = Email.of("example.com", logger);
         User userJohn = UserBuilder
-                .of(emailSend)
+                .of(email)
                 .setLastName("Doe")
                 .setFirstName("John")
                 .setEmail("john.doe@address.com")
-                .setAddress("address")
+                .setAddress(
+                        new AddressBuilder()
+                                .setNameStreet("Who")
+                                .setNameCity("WhoCity")
+                                .setZipCode("0007")
+                                .build()
+                )
                 .build();
-        System.out.println(userJohn);
+        logger.toStringObject(userJohn);
 
 
-        System.out.println("\n----- 2nd user -----\n");
+        logger.of("\n----- 2nd user -----\n");
 
-        EmailSend emailSend2 = EmailSend.of("error.com");
+        Email email2 = Email.of("error.com", logger);
         User userJane = UserBuilder
-                .of(emailSend2)
+                .of(email2)
                 .setLastName("Doe2")
                 .setFirstName("Jane")
                 .setEmail("jane.doe@address2.com")
-                .setAddress("address2")
+                .setAddress(
+                        new AddressBuilder()
+                                .setNameStreet("Hello")
+                                .setNameCity("Friends")
+                                .setZipCode("1234")
+                                .build()
+                )
                 .build();
 
 
-        System.out.println(userJane);
+        logger.toStringObject(userJane);
 
 
-        System.out.println("\n----- Verification Singleton -----\n");
+        logger.of("\n----- Verification Singleton -----\n");
 
-
-        System.out.println("EmailSend instances are equal: " + emailSend.equals(emailSend2));
-        System.out.println("But EmailSend domains are equal: " + emailSend2.getDomain() + " == " + emailSend.getDomain());
+        logger.equal(email2, email);
+        logger.of("But EmailSend domains are equal: " + email2.getDomain() + " == " + email.getDomain());
     }
 }

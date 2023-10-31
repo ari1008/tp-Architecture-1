@@ -11,17 +11,13 @@ final class User {
     private final String email;
 
 
-    private final String address;
+    private final Address address;
 
-    public User(String lastName, String firstName, String email, String address) {
+    public User(String lastName, String firstName, String email, Address address) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
         this.address = address;
-    }
-
-    public static UserBuilder create(EmailSend emailSend) {
-        return UserBuilder.of(emailSend);
     }
 
     @Override
@@ -43,7 +39,7 @@ final class User {
                 "lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
+                ", address='" + address.toString() + '\'' +
                 '}';
     }
 }
